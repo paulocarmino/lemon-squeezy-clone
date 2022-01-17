@@ -38,7 +38,7 @@ Default.args = {
   variant: 'default'
 }
 
-export const Outline: Story<ButtonProps> = (args) => <Button {...args} />
+export const Outline: Story<ButtonProps> = (args) => <Button variant='outline' {...args} />
 
 Outline.args = {
   children: 'Click to logout',
@@ -47,7 +47,7 @@ Outline.args = {
   variant: 'outline'
 }
 
-export const WithIcon: Story<ButtonProps> = (args) => <Button {...args} />
+export const WithIcon: Story<ButtonProps> = (args) => <Button variant='outline'{...args} />
 
 WithIcon.args = {
   children: 'Sign in with Google',

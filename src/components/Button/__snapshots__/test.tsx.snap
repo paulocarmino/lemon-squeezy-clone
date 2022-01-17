@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> should render the heading 1`] = `
-<h1>
-  Button
-</h1>
+exports[`<Button /> should render default button 1`] = `
+<button
+  class="relative flex items-center py-3 px-10 rounded-md hover:cursor-pointer shadow-sm focus:outline-none focus-visible:ring focus-visible:ring-primary-500 transition-colors duration-75 bg-purple-600 text-white hover:bg-purple-700 disabled:bg-purple-900 disabled:hover:bg-purple-900"
+  type="button"
+>
+  Sign In
+</button>
 `;
