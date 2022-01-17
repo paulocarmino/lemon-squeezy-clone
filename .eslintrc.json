@@ -9,6 +9,7 @@
   "plugins": ["prettier"],
   "ignorePatterns": ["*.config.js"],
   "rules": {
+    "react/display-name": "off",
     "tailwindcss/no-custom-classname": "off",
     "import/order": [
       "error",
