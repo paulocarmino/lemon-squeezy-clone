@@ -7,7 +7,7 @@ describe('<Button />', () => {
   it('should render default button', () => {
     const { container } = render(<Button>Sign In</Button>)
 
-    expect(screen.getByText(/Sign In/i)).toHaveClass('py-3 px-10')
+    expect(screen.getByText(/Sign In/i)).toHaveClass('py-2 px-8')
 
     expect(container.firstChild).toMatchSnapshot()
   })
@@ -29,7 +29,7 @@ describe('<Button />', () => {
   it('should render a disabled Default Button', () => {
     render(<Button disabled>Buy now</Button>)
 
-    expect(screen.getByRole('button', { name: /buy now/i })).toHaveClass('disabled:bg-purple-900')
+    expect(screen.getByRole('button', { name: /buy now/i })).toHaveClass('disabled:bg-primary-200')
   })
 
   it('should render a icon when is loading', () => {
@@ -37,5 +37,11 @@ describe('<Button />', () => {
 
     expect(screen.getByTestId('loading-icon')).toBeInTheDocument()
 
+  })
+
+  it('shold render a 100% width button when property block is set', () => {
+    render(<Button block>Block button</Button>)
+
+    expect(screen.getByText(/Block button/i)).toHaveClass('w-full')
   })
 })

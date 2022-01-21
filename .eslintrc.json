@@ -11,6 +11,7 @@
   "rules": {
     "react/display-name": "off",
     "tailwindcss/no-custom-classname": "off",
+    "import/no-anonymous-default-export": "off",
     "import/order": [
       "error",
       {
