@@ -163,6 +163,8 @@ export default function Login() {
   )
 }
 
+Login.template = 'none'
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context
   const session = await getSession({ req })

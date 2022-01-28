@@ -2,42 +2,31 @@ import '@/styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 
-import Header from '@/components/Header'
-import LeftMenu from '@/components/LeftMenu'
+import Template from '@/components/Template'
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'People', href: '/people' },
-  {
-    name: 'Store',
-    children: [
-      { name: 'Products', href: '/products' },
-      { name: 'Orders', href: '/orders' },
-    ],
-  },
-  {
-    name: 'Reports',
-    children: [
-      { name: 'All time', href: '/all-time' },
-      { name: 'By month', href: '/by-month' },
-    ],
+
+type ComponentCustom = {
+  template: "none" | null
+} & React.Component
+
+type AppPropsCustom = {
+  Component: ComponentCustom
+} & AppProps
+
+function MyApp({ Component, pageProps: { session, template, ...pageProps } }: AppPropsCustom) {
+  const templateFromPage = Component.template
+
+  if (templateFromPage !== 'none') {
+    return (
+      <Template>
+        <Component {...pageProps} />
+      </Template>
+    )
+  } else {
+    return <Component {...pageProps} />
+
   }
-]
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  return (
-    <SessionProvider session={session}>
-      <div className='flex'>
-        <div className="min-w-[280px]">
-          <LeftMenu navigation={navigation} />
-        </div>
-        <div className="flex-1 py-6 px-12">
-          <Header />
-          <Component {...pageProps} />
-        </div>
-      </div>
-    </SessionProvider>
-  )
 }
 
 export default MyApp
