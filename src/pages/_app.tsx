@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 
+import Header from '@/components/Header'
 import LeftMenu from '@/components/LeftMenu'
 
 const navigation = [
@@ -30,7 +31,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <div className="min-w-[280px]">
           <LeftMenu navigation={navigation} />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 py-6 px-12">
+          <Header />
           <Component {...pageProps} />
         </div>
       </div>
