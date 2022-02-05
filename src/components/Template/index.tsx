@@ -20,13 +20,13 @@ const navigation = [
   }
 ]
 
-const Template = ({ children }: any) => {
+const Template = ({ children, headerTitle }: any) => {
   return (<div className='flex'>
     <div className="min-w-[280px]">
       <LeftMenu navigation={navigation} />
     </div>
     <div className="flex-1 py-6 px-12">
-      <Header />
+      <Header headerTitle={headerTitle} />
       {children}
     </div>
   </div>)

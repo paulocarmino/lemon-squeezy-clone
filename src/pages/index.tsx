@@ -1,7 +1,13 @@
+import { GetServerSideProps } from 'next'
+import { useSession, getSession } from "next-auth/react"
 import Head from 'next/head'
 import Image from 'next/image'
 
 export default function Home() {
+  const { data: session, status } = useSession()
+
+  console.log(session)
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <Head>
@@ -62,3 +68,18 @@ export default function Home() {
   )
 }
 
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context
+  const session = await getSession({ req })
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/login',
+        statusCode: 302
+      }
+    }
+  }
+
+  return { props: {} }
+}

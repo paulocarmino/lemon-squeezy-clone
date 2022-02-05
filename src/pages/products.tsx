@@ -1,5 +1,6 @@
-const ProductsPage = () => {
+export default function ProductsPage() {
   return <h1>Products</h1>
 }
 
-export default ProductsPage
+ProductsPage.headerTitle = "Products"
+

@@ -9,31 +9,37 @@ const ButtonIcon = ({ icon }: any) => {
   )
 }
 
-const Header = () => (
-  <div className='flex w-full text-xl'>
-    <ButtonIcon icon={<FiMenu />} />
+const Header = ({ headerTitle }: any) => {
+  console.log(headerTitle)
+  return (
+    <div className='flex w-full text-xl'>
+      <div className='flex items-center font-medium'>
+        <ButtonIcon icon={<FiMenu />} />
+        <h1 className="text-2xl">{headerTitle}</h1>
+      </div>
 
-    <div className='flex justify-end items-center w-full'>
-      <ButtonIcon icon={<FiSearch />} />
-      <ButtonIcon icon={<FiEye />} />
-      <ButtonIcon icon={<FiBookOpen />} />
+      <div className='flex justify-end items-center w-full'>
+        <ButtonIcon icon={<FiSearch />} />
+        <ButtonIcon icon={<FiEye />} />
+        <ButtonIcon icon={<FiBookOpen />} />
 
-      <ButtonIcon icon={<span className="block w-6 h-6">
-        <div className="relative w-full h-full">
-          <div className="absolute inset-0 w-full h-full svg-avatar">
-            <img
-              src="https://www.gravatar.com/avatar/ffe37048261e208fe0066596e2d0023c?d=blank"
-              alt=""
-              className="block absolute inset-0 w-full h-full rounded-full"
-            />
+        <ButtonIcon icon={<span className="block w-6 h-6">
+          <div className="relative w-full h-full">
+            <div className="absolute inset-0 w-full h-full svg-avatar">
+              <img
+                src="https://www.gravatar.com/avatar/ffe37048261e208fe0066596e2d0023c?d=blank"
+                alt=""
+                className="block absolute inset-0 w-full h-full rounded-full"
+              />
+            </div>
           </div>
-        </div>
-      </span>} />
+        </span>} />
 
-      <AiFillPlusCircle className='ml-2 text-[2.7rem] text-primary-500 transition-transform delay-[0.2ms] hover:scale-[1.1] cursor-pointer' />
+        <AiFillPlusCircle className='ml-2 text-[2.7rem] text-primary-500 transition-transform delay-[0.2ms] hover:scale-[1.1] cursor-pointer' />
+      </div>
+
     </div>
-
-  </div>
-)
+  )
+}
 
 export default Header
