@@ -1,3 +1,10 @@
+.table tbody:before {
+  content: '@';
+  display: block;
+  line-height: 16px;
+  text-indent: -99999px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +105,11 @@ body {
 .bg-wtf-pigmentblue {
   --tw-bg-opacity: 1;
   background-color: rgba(53, 56, 157, var(--tw-bg-opacity));
+}
+
+.table tbody:before {
+  content: '@';
+  display: block;
+  line-height: 16px;
+  text-indent: -99999px;
 }
