@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps: { session, template, headerTitle, ...page
     )
   } else {
     return <SessionProvider session={session}><Component {...pageProps} /></SessionProvider>
-
   }
 
 }
