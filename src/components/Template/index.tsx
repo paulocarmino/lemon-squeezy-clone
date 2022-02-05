@@ -30,7 +30,7 @@ const Template = ({ children, headerTitle }: any) => {
     <div className="min-w-[280px]">
       <LeftMenu navigation={navigation} />
     </div>
-    <div className="flex-1 py-6 px-12">
+    <div className="flex flex-col flex-1 py-6 px-12 max-h-screen">
       <Header headerTitle={headerTitle} userFullName={userFullName} />
       {children}
     </div>

@@ -28,13 +28,11 @@ const Header = ({ headerTitle, userFullName }: any) => {
 
 
         <Menu as="div" className="inline-block relative text-left">
-          <div>
-            <Menu.Button className="inline-flex justify-cente">
-              <ButtonIcon icon={<span className="inline-flex justify-center items-center w-7 h-7 bg-gray-500 rounded-full">
-                <span className="text-xs font-medium leading-none text-white">{setNameInitials(userFullName)}</span>
-              </span>} />
-            </Menu.Button>
-          </div>
+          <Menu.Button className="inline-flex justify-cente">
+            <ButtonIcon icon={<span className="inline-flex justify-center items-center w-7 h-7 bg-gray-500 rounded-full">
+              <span className="text-xs font-medium leading-none text-white">{setNameInitials(userFullName)}</span>
+            </span>} />
+          </Menu.Button>
 
           <Transition
             as="div"

@@ -1,10 +1,12 @@
-import { Disclosure } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/solid'
+import { Disclosure, Menu, Transition, Popover } from '@headlessui/react'
+import { ChevronUpIcon, CurrencyDollarIcon, EyeIcon, PlusIcon, CogIcon, LibraryIcon, CheckCircleIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { usePopper } from 'react-popper'
 import clsxm from '@/utils/clsxm'
 import checkCurrentsPath from '@/utils/navigation'
+
 
 const LemonSqueezyLogo = () => {
   return (<svg className="" width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +22,17 @@ type LeftMenuProps = {
 }
 
 export default function LeftMenu({ navigation }: LeftMenuProps) {
-  const [navi, setNavi] = useState(navigation)
+  let [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
+  let [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
+
+  let { styles, attributes } = usePopper(referenceElement, popperElement,
+    {
+      placement: 'top-end', modifiers: [{
+        name: 'offset',
+        options: { offset: [0, 8] }
+      }]
+    })
+
   const router = useRouter()
   const updatedNavigation = checkCurrentsPath(navigation, router)
 
@@ -91,19 +103,81 @@ export default function LeftMenu({ navigation }: LeftMenuProps) {
         </nav>
       </div>
 
-      <div className="group flex justify-between items-center p-2 mx-4 text-sm font-medium text-left text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-md focus:outline-none">
-        <div className='flex items-center'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 64 64" version="1.1">
-            <circle fill="#00ACFF" width="64" height="64" cx="32" cy="32" r="32"></circle>
-            <text x="50%" y="50%" textAnchor="middle" fontSize="38" fontWeight="600" dy=".1em" dominantBaseline="middle" fill="#ffffff">O</text></svg>
+      <Popover as="div" className="inline-block relative text-left">
+        <Popover.Button ref={setReferenceElement} className="flex w-full">
+          <div className="group flex justify-between items-center p-2 mx-2 w-full text-sm font-medium text-left text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-md focus:outline-none">
+            <div className='flex items-center'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 64 64" version="1.1">
+                <circle fill="#00ACFF" width="64" height="64" cx="32" cy="32" r="32"></circle>
+                <text x="50%" y="50%" textAnchor="middle" fontSize="38" fontWeight="600" dy=".1em" dominantBaseline="middle" fill="#ffffff">O</text></svg>
 
-          <span className='ml-3'>OrangeInc</span>
-        </div>
+              <span className='ml-3'>orangeInc</span>
+            </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-        </svg>
-      </div>
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+            </svg>
+          </div>
+        </Popover.Button>
+
+        <Transition
+          as="div"
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Popover.Panel ref={setPopperElement}
+            style={styles.popper}
+            {...attributes.popper}
+            className="absolute !right-[0.5rem] w-[232px] bg-white rounded-md divide-y divide-gray-100 focus:outline-none ring-1 ring-black shadow-lg origin-top-right ring-opacity-5">
+            <div className="py-1">
+              <a href="#" className="group flex items-center py-2 px-4 text-sm text-gray-900 hover:bg-gray-100">
+                <div className='flex justify-between items-center w-full'>
+                  <div className='flex items-center'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 64 64" version="1.1">
+                      <circle fill="#00ACFF" width="64" height="64" cx="32" cy="32" r="32"></circle>
+                      <text x="50%" y="50%" textAnchor="middle" fontSize="38" fontWeight="600" dy=".1em" dominantBaseline="middle" fill="#ffffff">O</text></svg>
+
+                    <span className='ml-3'>orangeInc</span>
+                  </div>
+
+                  <CheckCircleIcon className="mr-3 w-7 h-7 text-primary-500 group-hover:text-primary-400" aria-hidden="true" />
+                </div>
+              </a>
+              <a href="#" className="group flex items-center py-[0.4rem] px-4 text-sm text-gray-900 hover:bg-gray-100">
+                <PlusIcon className="mr-3 w-5 h-5 text-gray-700" aria-hidden="true" />
+                New Store
+              </a>
+            </div>
+            <div className="py-1">
+              <a href="#" className="group flex items-center py-[0.4rem] px-4 text-sm text-gray-900 hover:bg-gray-100">
+                <CogIcon className="mr-3 w-5 h-5 text-gray-700" aria-hidden="true" />
+                Store Settings
+              </a>
+
+              <a href="#" className="group flex items-center py-[0.4rem] px-4 text-sm text-gray-900 hover:bg-gray-100">
+                <LibraryIcon className="mr-3 w-5 h-5 text-gray-700" aria-hidden="true" />
+                Payouts
+              </a>
+
+              <a href="#" className="group flex items-center py-[0.4rem] px-4 text-sm text-gray-900 hover:bg-gray-100">
+                <CurrencyDollarIcon className="mr-3 w-5 h-5 text-gray-700" aria-hidden="true" />
+                Billing Details
+              </a>
+
+              <a href="#" className="group flex items-center py-[0.4rem] px-4 text-sm text-gray-900 hover:bg-gray-100">
+                <EyeIcon className="mr-3 w-5 h-5 text-gray-700" aria-hidden="true" />
+                View Store
+              </a>
+            </div>
+          </Popover.Panel>
+        </Transition>
+      </Popover>
+
+
     </div>
   )
 }

@@ -7,7 +7,7 @@ export default function Home() {
   const { data: session, status } = useSession()
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center h-full">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -15,7 +15,7 @@ export default function Home() {
 
       <main>
         <section className="bg-white">
-          <div className="flex flex-col justify-center items-center min-h-screen text-center layout">
+          <div className="flex flex-col justify-center items-center text-center layout">
             <Image
               src="/vercel.svg"
               width={48}
