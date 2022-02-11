@@ -1,5 +1,5 @@
-const checkCurrentsPath = (navigation, router) => {
-  const updatedNavigation = navigation.map((menu) => {
+const checkCurrentsPath = (navigation: any, router: any) => {
+  const updatedNavigation = navigation.map((menu: any) => {
     if (menu.href === router.pathname) {
       menu.current = true
     } else {
@@ -7,7 +7,7 @@ const checkCurrentsPath = (navigation, router) => {
     }
 
     if (menu.children) {
-      menu.children.map((submenu) => {
+      menu.children.map((submenu: any) => {
         if (submenu.href === router.pathname) {
           submenu.current = true
           menu.current = true

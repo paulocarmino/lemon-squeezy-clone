@@ -8,8 +8,15 @@ export default NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     EmailProvider({
-      server: process.env.EMAIL_SERVER,
-      from: 'NextAuth.js <no-reply@example.com>'
+      server: {
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      },
+      from: 'Lemon Squeezy Clone <no-reply@example.com>'
     })
   ]
 })

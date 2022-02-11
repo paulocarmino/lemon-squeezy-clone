@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
+import { SWRConfig } from 'swr'
 
 import Template from '@/components/Template'
 
@@ -21,9 +22,15 @@ function MyApp({ Component, pageProps: { session, template, headerTitle, ...page
   if (templateFromPage !== 'none') {
     return (
       <SessionProvider session={session}>
-        <Template headerTitle={headerTitleFromPage}>
-          <Component {...pageProps} />
-        </Template>
+        <SWRConfig
+          value={{
+            fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
+          }}
+        >
+          <Template headerTitle={headerTitleFromPage}>
+            <Component {...pageProps} />
+          </Template>
+        </SWRConfig>
       </SessionProvider>
     )
   } else {

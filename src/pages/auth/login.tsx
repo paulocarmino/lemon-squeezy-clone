@@ -36,7 +36,7 @@ const LemonSqueezyLogo = () => {
 
 export default function Login() {
   const inputEl = useRef<HTMLInputElement>(null);
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('contato@paulocarmino.com')
   const [loading, setLoading] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [timeLeft, { start, reset }] = useCountDown(30 * 1000, 1000);

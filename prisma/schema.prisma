@@ -16,12 +16,12 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?  @db.Text
+  id_token           String? @db.Text
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
@@ -55,4 +55,20 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum StatusProduct {
+  PUBLISHED
+  DRAFT
+}
+
+model Product {
+  id           String        @id @default(cuid())
+  name         String
+  description  String?
+  price        Decimal
+  status       StatusProduct @default(DRAFT)
+  totalSales   Int?
+  totalRevenue Decimal?
+  photos       String[]
 }
