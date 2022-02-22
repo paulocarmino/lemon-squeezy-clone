@@ -7,7 +7,6 @@ import { usePopper } from 'react-popper'
 import clsxm from '@/utils/clsxm'
 import checkCurrentsPath from '@/utils/navigation'
 
-
 const LemonSqueezyLogo = () => {
   return (<svg className="" width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fillRule="evenodd" clipRule="evenodd" d="M7.44011 24.4129L15.506 28.1336C16.5057 28.595 17.2114 29.3693 17.5924 30.2575C18.5563 32.5067 17.239 34.8071 15.1709 35.6343C13.1025 36.4613 10.8981 35.9291 9.89582 33.5901L6.38556 25.3782C6.11354 24.7416 6.79687 24.1162 7.44011 24.4129" fill="#FFC233"></path>

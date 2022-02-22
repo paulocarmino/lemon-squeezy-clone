@@ -3,11 +3,6 @@ import { XIcon } from '@heroicons/react/outline'
 import { Fragment, useState } from 'react'
 import getProducts from "@/queries/getProducts"
 
-const productsMock = [
-  { name: 'Um novo produto', price: '$9.99', status: 'Published', totalSales: '3', totalRevenue: '$30' },
-  { name: 'produto legal', price: '$9.99', status: 'Published', totalSales: '8', totalRevenue: '$89' },
-]
-
 export default function ProductsPage() {
   const [open, setOpen] = useState(true)
   const { products, isLoading, isError } = getProducts()
@@ -16,10 +11,8 @@ export default function ProductsPage() {
     setOpen(true)
   }
 
-
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Error...</div>
-
 
   return (
     <div className="flex flex-col mt-8">
